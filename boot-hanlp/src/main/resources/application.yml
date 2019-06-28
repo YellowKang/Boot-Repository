@@ -1,0 +1,4 @@
+swagger:
+  title: Hanlp自然语言处理
+  description: 分词热度，NLP处理等等
+  version: 1.0
