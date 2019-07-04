@@ -26,7 +26,8 @@ public class HanlpTestController {
     @PostMapping("coreAddress")
     @ApiOperation("查询核心地点")
     public Object coreAddress(String keyword) {
-        return HanlpUtil.coreAddress(keyword);
+        //ns为地点
+        return HanlpUtil.baseCoreWord(keyword,"ns");
     }
 
     /**
@@ -39,8 +40,8 @@ public class HanlpTestController {
     @ApiOperation("获取关键词")
     public Object coreKeywork(String keyword,Integer size) {
         return StringUtils.isEmpty(keyword) ? null
-                : size == null ? HanlpUtil.coreAddress(keyword)
-                : HanlpUtil.coreKeywork(keyword,size);
+                : size == null ? HanlpUtil.corekeyword(keyword)
+                : HanlpUtil.corekeyword(keyword,size);
     }
 
     /**
@@ -94,6 +95,18 @@ public class HanlpTestController {
     public Object traditionalToSimplified(String keyword) {
         return StringUtils.isEmpty(keyword) ? null
                 : HanLP.convertToSimplifiedChinese(keyword) ;
+    }
+
+    /**
+     * 机构以及公司识别
+     * @param keyword
+     * @return
+     */
+    @PostMapping("coreCompany")
+    @ApiOperation("机构以及公司识别")
+    public Object coreCompany(String keyword) {
+        return StringUtils.isEmpty(keyword) ? null
+                : HanlpUtil.baseCoreWord(keyword,"nt");
     }
 
 }
