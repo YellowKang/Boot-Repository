@@ -1,0 +1,5 @@
+log:
+  info:
+    path: logs/info/info_%d{yyyy-MM-dd}.part_%i.log
+  errot:
+    path: logs/error/error_%d{yyyy-MM-dd}.part_%i.log
